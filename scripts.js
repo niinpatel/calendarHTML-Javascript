@@ -38,8 +38,8 @@ function previous() {
 }
 
 function jump() {
-    currentYear = selectYear.value;
-    currentMonth = selectMonth.value;
+    currentYear = parseInt(selectYear.value);
+    currentMonth = parseInt(selectMonth.value);
     showCalendar(currentMonth, currentYear);
 }
 
