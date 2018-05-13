@@ -1,12 +1,12 @@
-today = new Date();
-currentMonth = today.getMonth();
-currentYear = today.getFullYear();
-selectYear = document.getElementById("year");
-selectMonth = document.getElementById("month");
+let today = new Date();
+let currentMonth = today.getMonth();
+let currentYear = today.getFullYear();
+let selectYear = document.getElementById("year");
+let selectMonth = document.getElementById("month");
 
-months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-monthAndYear = document.getElementById("monthAndYear");
+let monthAndYear = document.getElementById("monthAndYear");
 showCalendar(currentMonth, currentYear);
 
 
@@ -31,8 +31,9 @@ function jump() {
 function showCalendar(month, year) {
 
     let firstDay = (new Date(year, month)).getDay();
+    let daysInMonth = 32 - new Date(year, month, 32).getDate();
 
-    tbl = document.getElementById("calendar-body"); // body of the calendar
+    let tbl = document.getElementById("calendar-body"); // body of the calendar
 
     // clearing all previous cells
     tbl.innerHTML = "";
@@ -51,18 +52,18 @@ function showCalendar(month, year) {
         //creating individual cells, filing them up with data.
         for (let j = 0; j < 7; j++) {
             if (i === 0 && j < firstDay) {
-                cell = document.createElement("td");
-                cellText = document.createTextNode("");
+                let cell = document.createElement("td");
+                let cellText = document.createTextNode("");
                 cell.appendChild(cellText);
                 row.appendChild(cell);
             }
-            else if (date > daysInMonth(month, year)) {
+            else if (date > daysInMonth) {
                 break;
             }
 
             else {
-                cell = document.createElement("td");
-                cellText = document.createTextNode(date);
+                let cell = document.createElement("td");
+                let cellText = document.createTextNode(date);
                 if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
                     cell.classList.add("bg-info");
                 } // color today's date
@@ -78,10 +79,3 @@ function showCalendar(month, year) {
     }
 
 }
-
-
-// check how many days in a month code from https://dzone.com/articles/determining-number-days-month
-function daysInMonth(iMonth, iYear) {
-    return 32 - new Date(iYear, iMonth, 32).getDate();
-}
-
