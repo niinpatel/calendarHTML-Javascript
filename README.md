@@ -13,7 +13,7 @@ These function update the `currentMonth` and `currentYear` variable.
 
 **How showCalendar Works-** 
 
-`showCalendar(month, year)` function which takes in two parameters, month and year. Once, the function is called, it dynamically generates a calendar in HTML and appends it into our table. Here’s my approach.
+`showCalendar(month, year)` function takes in two parameters, "month" and "year". Once, the function is called, it dynamically generates a calendar in HTML and appends it into our table. Here’s my approach.
 
 Get the starting day of the month, we’ll use -
 
